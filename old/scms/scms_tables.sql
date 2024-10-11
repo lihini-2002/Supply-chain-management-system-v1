@@ -82,7 +82,7 @@ CREATE TABLE `Driver` (
   `driver_id` INT,
   `user_name` VARCHAR(20),
   `password` VARCHAR(16),
-  `driver_first_name` VARCHAR(1),
+  `driver_first_name` VARCHAR(100),
   `driver_last_name` VARCHAR(100),
   `driver_contact` INT,
   `driver_email` VARCHAR(200),
