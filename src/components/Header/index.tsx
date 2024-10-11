@@ -1,11 +1,11 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { SessionProvider, useSession } from "next-auth/react";
 import DarkModeSwitcher from "./DarkModeSwitcher";
 import DropdownNotification from "./DropdownNotification";
 import DropdownUser from "./DropdownUser";
 import SearchForm from "@/components/Header/SearchForm";
+import { isAuthenticated } from "../../utils/auth"; // Import the isAuthenticated function
 
 interface HeaderProps {
   sidebarOpen: string | boolean | undefined;
@@ -13,7 +13,7 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ sidebarOpen, setSidebarOpen }) => {
-  const { data: session } = useSession();
+  const userAuthenticated = isAuthenticated(); // Check if the user is authenticated
 
   return (
     <header className="sticky top-0 z-999 flex w-full border-b border-stroke bg-white dark:border-stroke-dark dark:bg-gray-dark">
@@ -97,19 +97,11 @@ const Header: React.FC<HeaderProps> = ({ sidebarOpen, setSidebarOpen }) => {
           </ul>
 
           {/* Conditionally render the DropdownUser component */}
-          {session ? <DropdownUser /> : null}
+          {userAuthenticated ? <DropdownUser /> : null}
         </div>
       </div>
     </header>
   );
 };
 
-const WrappedHeader: React.FC<HeaderProps> = (props) => {
-  return (
-    <SessionProvider>
-      <Header {...props} />
-    </SessionProvider>
-  );
-};
-
-export default WrappedHeader;
+export default Header;
