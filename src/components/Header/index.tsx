@@ -1,11 +1,12 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from 'next/navigation';
 import DarkModeSwitcher from "./DarkModeSwitcher";
 import DropdownNotification from "./DropdownNotification";
 import DropdownUser from "./DropdownUser";
 import SearchForm from "@/components/Header/SearchForm";
-import { isAuthenticated } from "../../utils/auth"; // Import the isAuthenticated function
+import { isAuthenticated } from "../../utils/auth";
 
 interface HeaderProps {
   sidebarOpen: string | boolean | undefined;
@@ -13,7 +14,15 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ sidebarOpen, setSidebarOpen }) => {
-  const userAuthenticated = isAuthenticated(); // Check if the user is authenticated
+  const userAuthenticated = isAuthenticated();
+  const router = useRouter();
+
+  const handleLogout = () => {
+    // Clear user data from localStorage
+    localStorage.removeItem("user");
+    // Redirect to login page
+    router.push('/auth/signin');
+  };
 
   return (
     <header className="sticky top-0 z-999 flex w-full border-b border-stroke bg-white dark:border-stroke-dark dark:bg-gray-dark">
@@ -60,7 +69,6 @@ const Header: React.FC<HeaderProps> = ({ sidebarOpen, setSidebarOpen }) => {
               </span>
             </span>
           </button>
-          {/* Hamburger Toggle BTN */}
 
           <Link className="block flex-shrink-0 lg:hidden" href="/">
             <Image
@@ -85,19 +93,48 @@ const Header: React.FC<HeaderProps> = ({ sidebarOpen, setSidebarOpen }) => {
           <ul className="flex items-center gap-2 2xsm:gap-4">
             {/* Search Form */}
             <SearchForm />
-            {/* Search Form */}
 
             {/* Dark Mode Toggle */}
             <DarkModeSwitcher />
-            {/* Dark Mode Toggle */}
 
             {/* Notification Menu Area */}
-            <DropdownNotification />
-            {/* Notification Menu Area */}
+            {userAuthenticated && <DropdownNotification />}
           </ul>
 
-          {/* Conditionally render the DropdownUser component */}
-          {userAuthenticated ? <DropdownUser /> : null}
+          <div className="flex items-center gap-3">
+            {userAuthenticated ? (
+              <>
+                <DropdownUser handleLogout={handleLogout} />
+                {/* <button
+                  onClick={handleLogout}
+                  className="inline-flex items-center justify-center rounded-md bg-primary px-6 py-2.5 text-center font-medium text-white hover:bg-opacity-90"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-5 w-5 mr-2"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+                    />
+                  </svg>
+                  Logout
+                </button> */}
+              </>
+            ) : (
+              <Link
+                href="/auth/signin"
+                className="inline-flex items-center justify-center rounded-md bg-primary px-6 py-2.5 text-center font-medium text-white hover:bg-opacity-90"
+              >
+                Sign In
+              </Link>
+            )}
+          </div>
         </div>
       </div>
     </header>

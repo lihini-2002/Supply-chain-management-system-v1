@@ -3,7 +3,11 @@ import Link from "next/link";
 import Image from "next/image";
 import ClickOutside from "@/components/ClickOutside";
 
-const DropdownUser = () => {
+interface DropdownUserProps {
+  handleLogout: () => void;
+}
+
+const DropdownUser: React.FC<DropdownUserProps> = ({ handleLogout }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [user, setUser] = useState({ name: "", email: "" });
 
@@ -61,7 +65,7 @@ const DropdownUser = () => {
         </span>
       </Link>
 
-      {/* <!-- Dropdown Star --> */}
+      {/* Dropdown Menu */}
       {dropdownOpen && (
         <div
           className={`absolute right-0 mt-7.5 flex w-[280px] flex-col rounded-lg border-[0.5px] border-stroke bg-white shadow-default dark:border-dark-3 dark:bg-gray-dark`}
@@ -84,10 +88,10 @@ const DropdownUser = () => {
 
             <span className="block">
               <span className="block font-medium text-dark dark:text-white">
-                {user.name} {/* Display actual username */}
+                {user.name}
               </span>
               <span className="block font-medium text-dark-5 dark:text-dark-6">
-                {user.email} {/* Display actual email */}
+                {user.email}
               </span>
             </span>
           </div>
@@ -127,6 +131,14 @@ const DropdownUser = () => {
                 </svg>
                 Settings
               </Link>
+            </li>
+            <li>
+              <button
+                onClick={handleLogout}
+                className="flex w-full items-center gap-2.5 rounded-[7px] p-2.5 text-sm font-medium text-dark-4 duration-300 ease-in-out hover:bg-gray-2 hover:text-dark dark:text-dark-6 dark:hover:bg-dark-3 dark:hover:text-white lg:text-base"
+              >
+                Logout
+              </button>
             </li>
           </ul>
         </div>
