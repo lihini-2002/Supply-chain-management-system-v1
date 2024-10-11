@@ -7,7 +7,7 @@ const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: '1234',
-  database: 'university'
+  database: 'scms-1'
 });
 
 // Connect to MySQL
@@ -20,16 +20,17 @@ db.connect(err => {
 });
 
 // Fetch products
-app.post('/products', (req, res) => {
-  db.query('SELECT * FROM classroom', (err, results) => {
-    console.log("Got request");
-    if (err) throw err;
-    res.json(results);
-  });
+app.get('/products', (req, res) => {
+  console.log("Got request");
+  // db.query('SELECT * FROM classroom', (err, results) => {
+  //   if (err) throw err;
+  //   res.json(results);
+  // });
+  res.json("test");
 });
 
 // Start server
-app.listen(3001, () => {
+app.listen(3000, () => {
   console.log('Server started on port 3000');
 });
 //test_one
