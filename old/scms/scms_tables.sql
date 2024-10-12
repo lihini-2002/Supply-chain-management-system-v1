@@ -123,7 +123,7 @@ CREATE TABLE `Train` (
 
 
 
-CREATE TABLE `Train_dellivery` (
+CREATE TABLE `Train_delivery` (
   `train_delivery_id` INT,
   `train_id` INT,
   `allocated_capacity` INT,
@@ -195,7 +195,7 @@ CREATE TABLE `Order` (
   FOREIGN KEY (`delivery_id`) REFERENCES `Truck_Delivery`(`delivery_id`),
   FOREIGN KEY (`finance_manager_id`) REFERENCES `FinanceandOrder_Manager`(`finance_manager_id`),
   FOREIGN KEY (`nearest_store_id`) REFERENCES `Store`(`store_id`),
-  FOREIGN KEY (`train_delivery_id`) REFERENCES `Train_dellivery`(`train_delivery_id`)
+  FOREIGN KEY (`train_delivery_id`) REFERENCES `Train_delivery`(`train_delivery_id`)
 );
 
 
