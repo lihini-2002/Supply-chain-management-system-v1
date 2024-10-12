@@ -1,6 +1,8 @@
 import { Metadata } from "next";
 import DefaultLayout from "@/components/Layouts/DefaultLayout";
 import React from "react";
+import TableThree from "@/components/Tables/TableThree";
+import TableTwo from "@/components/Tables/TableTwo";
 
 export const metadata: Metadata = {
     title:
@@ -13,7 +15,8 @@ export const metadata: Metadata = {
     return (
       <>
         <DefaultLayout>
-          <h1>This is the Driver overview page</h1>
+          {/* <h1>This is the Driver overview page</h1> */}
+          <TableTwo />
         </DefaultLayout>
       </>
     );
