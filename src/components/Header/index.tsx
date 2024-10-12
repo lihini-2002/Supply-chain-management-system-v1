@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -16,6 +18,7 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ sidebarOpen, setSidebarOpen }) => {
   const userAuthenticated = isAuthenticated();
   const router = useRouter();
+
 
   const handleLogout = () => {
     // Clear user data from localStorage
