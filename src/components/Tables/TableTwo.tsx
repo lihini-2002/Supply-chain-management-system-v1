@@ -16,7 +16,7 @@ const productData: Product[] = [
     category: "Electronics",
     price: 546,
     sold: 12,
-    profit: 125,
+    profit: 125, 
   },
   {
     image: "/images/product/product-03.png",

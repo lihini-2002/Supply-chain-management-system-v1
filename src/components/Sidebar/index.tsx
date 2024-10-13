@@ -46,18 +46,18 @@ const menuItemsByUserType = {
       label: "Payment Confirmation",
       route: "/dashboard/finance/payments",
     },
-    {
-      label: "Order Overview",
-      route: "/dashboard/finance/orders",
-    },
+    // {
+    //   label: "Order Overview",
+    //   route: "/dashboard/finance/orders",
+    // },
     {
       label: "Train Deliveries",
       route: "/dashboard/finance/train-deliveries",
     },
-    {
-      label: "Delivery Status",
-      route: "/dashboard/finance/delivery-status",
-    },
+    // {
+    //   label: "Delivery Status",
+    //   route: "/dashboard/finance/delivery-status",
+    // },
   ],
   storeManager: [
     {
