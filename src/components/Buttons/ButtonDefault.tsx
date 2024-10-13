@@ -3,26 +3,26 @@ import Link from "next/link";
 
 interface ButtonPropTypes {
   label: string;
-  link: string;
+  onClick: () => void; // Changed from link to onClick
   customClasses: string;
   children?: React.ReactNode;
 }
 
 const ButtonDefault = ({
   label,
-  link,
+  onClick, // Updated prop
   customClasses,
   children,
 }: ButtonPropTypes) => {
   return (
     <>
-      <Link
+      <button
         className={`inline-flex items-center justify-center gap-2.5 text-center font-medium hover:bg-opacity-90 ${customClasses}`}
-        href={link}
+        onClick={onClick} // Added onClick handler
       >
         {children}
         {label}
-      </Link>
+      </button>
     </>
   );
 };

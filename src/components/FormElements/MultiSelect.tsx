@@ -94,7 +94,7 @@ const MultiSelect: React.FC<DropdownProps> = ({ id }) => {
   });
 
   return (
-    <div className="relative z-50">
+    <div className="relative">
       <label className="mb-3 block text-body-sm font-medium text-dark dark:text-white">
         Multiselect Dropdown
       </label>
@@ -108,7 +108,7 @@ const MultiSelect: React.FC<DropdownProps> = ({ id }) => {
 
         <div className="flex flex-col items-center">
           <input name="values" type="hidden" defaultValue={selectedValues()} />
-          <div className="relative z-20 inline-block w-full">
+          <div className="relative inline-block w-full">
             <div className="relative flex flex-col items-center">
               <div ref={trigger} onClick={open} className="w-full">
                 <div className="mb-2 flex rounded-[7px] border-[1.5px] border-stroke py-[9px] pl-3 pr-3 outline-none transition focus:border-primary active:border-primary dark:border-dark-3 dark:bg-dark-2">
