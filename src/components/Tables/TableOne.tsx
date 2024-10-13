@@ -1,5 +1,6 @@
 import { BRAND } from "@/types/brand";
 import Image from "next/image";
+import SwitcherOne from "../FormElements/Switchers/SwitcherOne";
 
 const brandData: BRAND[] = [
   {
@@ -52,7 +53,7 @@ const TableOne = () => {
       </h4>
 
       <div className="flex flex-col">
-        <div className="grid grid-cols-3 sm:grid-cols-5">
+        <div className="grid grid-cols-4 sm:grid-cols-6"> {/* Updated column count */}
           <div className="px-2 pb-3.5">
             <h5 className="text-sm font-medium uppercase xsm:text-base">
               Source
@@ -78,11 +79,16 @@ const TableOne = () => {
               Conversion
             </h5>
           </div>
+          <div className="px-2 pb-3.5 text-center"> {/* New header for Confirmation */}
+            <h5 className="text-sm font-medium uppercase xsm:text-base">
+              Confirmation
+            </h5>
+          </div>
         </div>
 
         {brandData.map((brand, key) => (
           <div
-            className={`grid grid-cols-3 sm:grid-cols-5 ${
+            className={`grid grid-cols-4 sm:grid-cols-6 ${
               key === brandData.length - 1
                 ? ""
                 : "border-b border-stroke dark:border-dark-3"
@@ -120,6 +126,10 @@ const TableOne = () => {
               <p className="font-medium text-dark dark:text-white">
                 {brand.conversion}%
               </p>
+            </div>
+
+            <div className="flex items-center justify-center px-2 py-4"> {/* New column for Confirmation */}
+              <SwitcherOne />
             </div>
           </div>
         ))}
