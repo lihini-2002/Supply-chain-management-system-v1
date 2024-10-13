@@ -7,7 +7,6 @@ import TableOne from "@/components/Tables/TableOne";
 import TableTwo from "@/components/Tables/TableTwo";
 import TableThree from "@/components/Tables/TableThree";
 import { Package } from "@/types/package";
-import TableThreeFinTrain from "@/components/Tables/TableThreeFinTrain";
 import MultiSelect from "@/components/FormElements/MultiSelect";
 import ButtonDefault from "@/components/Buttons/ButtonDefault";
 

@@ -1,7 +1,12 @@
 "use client";
 import React, { useState } from "react";
 
-const SelectGroupThree: React.FC = () => {
+// Add props interface to define the expected props
+interface SelectGroupThreeProps {
+  options: { value: string; label: string }[]; // Define the structure of options
+}
+
+const SelectGroupThree: React.FC<SelectGroupThreeProps> = ({ options }) => {
   const [selectedOption, setSelectedOption] = useState<string>("");
   const [isOptionSelected, setIsOptionSelected] = useState<boolean>(false);
 
@@ -11,10 +16,10 @@ const SelectGroupThree: React.FC = () => {
 
   return (
     <div className="mb-5.5">
-      <label className="mb-3 block text-body-sm font-medium text-dark dark:text-white">
+      {/* <label className="mb-3 block text-body-sm font-medium text-dark dark:text-white">
         {" "}
         Which option best describes you?{" "}
-      </label>
+      </label> */}
 
       <div className="dark:bg-form-input relative z-20 bg-transparent">
         <select
@@ -28,23 +33,13 @@ const SelectGroupThree: React.FC = () => {
           }`}
         >
           <option value="" disabled className="text-body dark:text-bodydark">
-            Select your subject
+            Select
           </option>
-          <option value="Student" className="text-body dark:text-bodydark">
-            Student
-          </option>
-          <option
-            value="UX/UI Designer"
-            className="text-body dark:text-bodydark"
-          >
-            UX/UI Designer
-          </option>
-          <option
-            value="Web Developer"
-            className="text-body dark:text-bodydark"
-          >
-            Web Developer
-          </option>
+          {options.map((option) => (
+            <option key={option.value} value={option.value} className="text-body dark:text-bodydark">
+              {option.label}
+            </option>
+          ))}
         </select>
 
         <span className="absolute right-4 top-1/2 z-30 -translate-y-1/2">
